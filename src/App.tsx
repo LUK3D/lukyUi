@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import { ILukMenuItme, LukyNavbar } from './components/navbar';
+import {  LukyAnimatedNavbar } from './lukyUi/navbar';
+import { ILukMenuItme } from './lukyUi/types';
 
 function App() {
 
@@ -9,6 +10,17 @@ function App() {
         onClick:(item:ILukMenuItme)=>{
             console.log("Clicked on:", item)
         },
+        tooltip:(
+          <>
+            <div className="grid grid-cols-3 gap-2">
+            <div className='h-10 bg-gray-700 rounded-md'></div>
+            <div className='h-10 bg-gray-700 rounded-md'></div>
+            <div className='h-10 bg-gray-700 rounded-md'></div>
+            </div>
+            <p className='text-gray-400 font-bold my-2'>The Home Screen</p>
+            <p className='text-xs text-gray-500 space-y-2'>A Cool Menu button</p>
+          </>
+        ),
         index:0,
         label:'Home',
         link:'#',
@@ -18,6 +30,17 @@ function App() {
       },
       {
         index:1,
+        tooltip:(
+          <>
+            <div className="grid grid-cols-3 gap-2">
+            <div className='h-10 bg-gray-700 rounded-md'></div>
+            <div className='h-10 bg-gray-700 rounded-md'></div>
+            <div className='h-10 bg-gray-700 rounded-md'></div>
+            </div>
+            <p className='text-gray-400 font-bold my-2'>My Dashboard</p>
+            <p className='text-xs text-gray-500 space-y-2'>User tooltips to explain your menus</p>
+          </>
+        ),
         label:'Dashboard',
         link:'#',
         icon:( <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -68,7 +91,7 @@ function App() {
   return (
     <div className=" bg-gray-200 p-4  w-screen h-screen flex ">
         
-          <LukyNavbar 
+          <LukyAnimatedNavbar 
           menus={menus}
           leading={<div className='icon w-full h-15 rounded-lg bg-blue-500'></div>}
           bottomIcons={[
@@ -85,13 +108,13 @@ function App() {
                      </svg>
                      </div>)
           ]}
-          ></LukyNavbar>
+          ></LukyAnimatedNavbar>
           <div className='pl-10'>
-          <LukyNavbar 
+          <LukyAnimatedNavbar 
           menus={menus}
           leading={<div className='icon w-full h-15 rounded-lg bg-blue-500'></div>}
          
-          ></LukyNavbar>
+          ></LukyAnimatedNavbar>
           </div>
        
     </div>

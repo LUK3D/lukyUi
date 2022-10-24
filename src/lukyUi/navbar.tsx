@@ -1,28 +1,15 @@
 import { ReactNode, useState } from "react";
+import { ILukyNavbar } from "./types";
 
 
 
-export interface ILukyNavbar{
-    menus:Array<ILukMenuItme>,
-    bottomIcons?:Array<ReactNode>,
-    leading?:ReactNode
-}
 
-export interface ILukMenuItme{
-    index:number,
-    label:string,
-    link?:string,
-    icon:ReactNode
-    tooltip?:ReactNode,
-    /**🚀 Have the current menu object as an argument */
-    onClick?:Function
-}
 
 /** # 🚀 Awesome LUKY Navbar 
  * Create an awesome navbar for your apps
  * 
 */
-export const LukyNavbar = (args:ILukyNavbar)=>{
+export const LukyAnimatedNavbar = (args:ILukyNavbar)=>{
     const [currentMenu,setCurrentMenu]=useState(0);
     const [openMenu,setOpenMenu]=useState(false);
     
@@ -44,18 +31,12 @@ export const LukyNavbar = (args:ILukyNavbar)=>{
                     return (
                       <li key={"luky-menu-item-" + menu.index} className='flex w-full mt-4 relative group'>
 
-                          <div className={`${!menu.tooltip && 'hidden'}  ${openMenu?'left-45':'left-16' } shadow-2xl z-10 transform transition scale-0 group-hover:scale-100  -top-[160%]   popover w-40 h-40 bg-gray-800 absolute rounded-md p-5 flex flex-col`}>
+                          <div className={`${!menu.tooltip && 'hidden'}  ${openMenu?'left-45':'left-16' } shadow-2xl z-20 transform transition scale-0 group-hover:scale-100  -top-[160%]   popover w-40 h-40 bg-gray-800 absolute rounded-md p-5 flex flex-col`}>
                             <div role='button' className='z-10 right-37  expander absolute w-4 h-4 bg-gray-800  z-0 rounded-sm transform -rotate-130 top-[50%] cursor-pointer text-gray-300 flex flex-row-reverse'>
                             </div>
 
                                 <div className={` flex flex-col w-full justify-center text-center`}>
-                                        {/* <div className="grid grid-cols-3 gap-2">
-                                        <div className='h-10 bg-gray-700 rounded-md'></div>
-                                        <div className='h-10 bg-gray-700 rounded-md'></div>
-                                        <div className='h-10 bg-gray-700 rounded-md'></div>
-                                        </div>
-                                        <p className='text-gray-400 font-bold my-2'>Tittle</p>
-                                        <p className='text-xs text-gray-500 space-y-2'>little description goes here</p> */}
+                                   
                                         {menu.tooltip}
                                 </div>
                             </div>
